@@ -1,0 +1,172 @@
+AWS Docs as of 7/7/24 
+
+What is Amazon Bedrock?
+
+Amazon Bedrock is a fully managed service that makes high-performing foundation models (FMs) from leading AI startups and Amazon available for your use through a unified API. You can choose from a wide range of foundation models to find the model that is best suited for your use case. Amazon Bedrock also offers a broad set of capabilities to build generative AI applications with security, privacy, and responsible AI. Using Amazon Bedrock, you can easily experiment with and evaluate top foundation models for your use cases, privately customize them with your data using techniques such as fine-tuning and Retrieval Augmented Generation (RAG), and build agents that execute tasks using your enterprise systems and data sources.
+
+With Amazon Bedrock's serverless experience, you can get started quickly, privately customize foundation models with your own data, and easily and securely integrate and deploy them into your applications using AWS tools without having to manage any infrastructure.
+
+Topics
+Features of Amazon Bedrock
+Amazon Bedrock pricing
+Supported AWS Regions
+Key definitions
+Features of Amazon Bedrock
+
+Take advantage of Amazon Bedrock foundation models to explore the following capabilities. To see feature limitations by Region, see Model support by AWS Region.
+
+Experiment with prompts and configurations – Run model inference by sending prompts using different configurations and foundation models to generate responses. You can use the API or the text, image, and chat playgrounds in the console to experiment in a graphical interface. When you're ready, set up your application to make requests to the InvokeModel APIs.
+
+Augment response generation with information from your data sources – Create knowledge bases by uploading data sources to be queried in order to augment a foundation model's generation of responses.
+
+Create applications that reason through how to help a customer – Build agents that use foundation models, make API calls, and (optionally) query knowledge bases in order to reason through and carry out tasks for your customers.
+
+Adapt models to specific tasks and domains with training data – Customize an Amazon Bedrock foundation model by providing training data for fine-tuning or continued-pretraining in order to adjust a model's parameters and improve its performance on specific tasks or in certain domains.
+
+Improve your FM-based application's efficiency and output – Purchase Provisioned Throughput for a foundation model in order to run inference on models more efficiently and at discounted rates.
+
+Determine the best model for your use case – Evaluate outputs of different models with built-in or custom prompt datasets to determine the model that is best suited for your application.
+
+Note
+Model evaluation is in preview release for Amazon Bedrock and is subject to change.
+
+Prevent inappropriate or unwanted content – Use guardrails to implement safeguards for your generative AI applications.
+
+
+Amazon Titan Embeddings docs:
+Amazon Titan Embeddings text models include Amazon Titan Text Embeddings v2 and Titan Text Embeddings G1 model.
+
+Text embeddings represent meaningful vector representations of unstructured text such as documents, paragraphs, and sentences. You input a body of text and the output is a (1 x n) vector. You can use embedding vectors for a wide variety of applications.
+
+The Amazon Titan Text Embedding v2 model (amazon.titan-embed-text-v2:0) can intake up to 8,192 tokens and outputs a vector of 1,024 dimensions. The model also works in 100+ different languages. The model is optimized for text retrieval tasks, but can also perform additional tasks, such as semantic similarity and clustering. Amazon Titan Embeddings text v2 also supports long documents, however, for retrieval tasks it is recommended to segment documents into logical segments (such as paragraphs or sections), per our recommendation.
+
+Amazon Titan Embeddings models generate meaningful semantic representation of documents, paragraphs and sentences. Amazon Titan Text Embeddings takes as input a body of text and generates a n-dimensional vector. Amazon Titan Text Embeddings is offered via latency-optimized endpoint invocation [link] for faster search (recommended during the retrieval step) as well as throughput optimized batch jobs [link] for faster indexing.
+
+The Amazon Titan Embedding Text v2 model supports the following languages: English, German, French, Spanish, Japanese, Chinese, Hindi, Arabic, Italian, Portuguese, Swedish, Korean, Hebrew, Czech, Turkish, Tagalog, Russian, Dutch, Polish, Tamil, Marathi, Malayalam, Telugu, Kannada, Vietnamese, Indonesian, Persian, Hungarian, Modern Greek (1453-), Romanian, Danish, Thai, Finnish, Slovak, Ukrainian, Norwegian, Bulgarian, Catalan, Serbian, Croatian, Lithuanian, Slovenian, Estonian, Latin, Bengali, Latvian, Malay (macrolanguage), Bosnian, Albanian, Azerbaijani, Galician, Icelandic, Georgian, Macedonian, Basque, Armenian, Nepali (macrolanguage), Urdu, Kazakh, Mongolian, Belarusian, Uzbek, Khmer, Norwegian Nynorsk, Gujarati, Burmese, Welsh, Esperanto, Sinhala, Tatar, Swahili (macrolanguage), Afrikaans, Irish, Panjabi, Kurdish, Kirghiz, Tajik, Oriya (macrolanguage), Lao, Faroese, Maltese, Somali, Luxembourgish, Amharic, Occitan (post 1500), Javanese, Hausa, Pushto, Sanskrit, Western Frisian, Malagasy, Assamese, Bashkir, Breton, Waray (Philippines), Turkmen, Corsican, Dhivehi, Cebuano, Kinyarwanda, Haitian, Yiddish, Sindhi, Zulu, Scottish Gaelic, Tibetan, Uighur, Maori, Romansh, Xhosa, Sundanese, Yoruba.
+
+Note
+Amazon Titan Text Embeddings v2 model and Titan Text Embeddings v1 model do not supports inference parameters such as maxTokenCount or topP.
+
+Amazon Titan Text Embeddings V2 model
+
+Model ID – amazon.titan-embed-text-v2:0
+
+Max input text tokens – 8,192
+
+Languages – English (100+ languages in preview)
+
+Max input image size – 5 MB
+
+Output vector size – 1,024 (default), 384, 256
+
+Inference types – On-Demand, Provisioned Throughput
+
+Supported use cases – RAG, document search, reranking, classification, etc.
+
+Note
+Titan Text Embeddings V2 takes as input a non-empty string with up to 8,192 tokens. The characters to token ratio in English is 4.7 characters per token. While Titan Text Embeddings V1 and Titan Text Embeddings V2 are able to accommodate up to 8,192 tokens, it is recommended to segment documents into logical segments (such as paragraphs or sections).
+
+To use the text or image embeddings models, use the Invoke Model API operation with amazon.titan-embed-text-v1 or amazon.titan-embed-image-v1 as the model Id and retrieve the embedding object in the response.
+
+AWS Lambd docs:
+What is AWS Lambda?
+You can use AWS Lambda to run code without provisioning or managing servers.
+
+Lambda runs your code on a high-availability compute infrastructure and performs all of the administration of the compute resources, including server and operating system maintenance, capacity provisioning and automatic scaling, and logging. With Lambda, all you need to do is supply your code in one of the language runtimes that Lambda supports.
+
+You organize your code into Lambda functions. The Lambda service runs your function only when needed and scales automatically. You only pay for the compute time that you consume—there is no charge when your code is not running. For more information, see AWS Lambda Pricing.
+
+Tip
+To learn how to build serverless solutions, check out the Serverless Developer Guide.
+
+When to use Lambda
+
+Lambda is an ideal compute service for application scenarios that need to scale up rapidly, and scale down to zero when not in demand. For example, you can use Lambda for:
+
+File processing: Use Amazon Simple Storage Service (Amazon S3) to trigger Lambda data processing in real time after an upload.
+
+Stream processing: Use Lambda and Amazon Kinesis to process real-time streaming data for application activity tracking, transaction order processing, clickstream analysis, data cleansing, log filtering, indexing, social media analysis, Internet of Things (IoT) device data telemetry, and metering.
+
+Web applications: Combine Lambda with other AWS services to build powerful web applications that automatically scale up and down and run in a highly available configuration across multiple data centers.
+
+IoT backends: Build serverless backends using Lambda to handle web, mobile, IoT, and third-party API requests.
+
+Mobile backends: Build backends using Lambda and Amazon API Gateway to authenticate and process API requests. Use AWS Amplify to easily integrate with your iOS, Android, Web, and React Native frontends.
+
+When using Lambda, you are responsible only for your code. Lambda manages the compute fleet that offers a balance of memory, CPU, network, and other resources to run your code. Because Lambda manages these resources, you cannot log in to compute instances or customize the operating system on provided runtimes. Lambda performs operational and administrative activities on your behalf, including managing capacity, monitoring, and logging your Lambda functions.
+
+
+Amazon S3 docs:
+What is Amazon S3?
+Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance. Customers of all sizes and industries can use Amazon S3 to store and protect any amount of data for a range of use cases, such as data lakes, websites, mobile applications, backup and restore, archive, enterprise applications, IoT devices, and big data analytics. Amazon S3 provides management features so that you can optimize, organize, and configure access to your data to meet your specific business, organizational, and compliance requirements.
+
+Note:
+For more information about using the Amazon S3 Express One Zone storage class with directory buckets, see What is S3 Express One Zone? and Directory buckets.
+
+Storage classes
+Amazon S3 offers a range of storage classes designed for different use cases. For example, you can store mission-critical production data in S3 Standard or S3 Express One Zone for frequent access, save costs by storing infrequently accessed data in S3 Standard-IA or S3 One Zone-IA, and archive data at the lowest costs in S3 Glacier Instant Retrieval, S3 Glacier Flexible Retrieval, and S3 Glacier Deep Archive.
+
+Amazon S3 Express One Zone is a high-performance, single-zone Amazon S3 storage class that is purpose-built to deliver consistent, single-digit millisecond data access for your most latency-sensitive applications. S3 Express One Zone is the lowest latency cloud object storage class available today, with data access speeds up to 10x faster and with request costs 50 percent lower than S3 Standard. S3 Express One Zone is the first S3 storage class where you can select a single Availability Zone with the option to co-locate your object storage with your compute resources, which provides the highest possible access speed. Additionally, to further increase access speed and support hundreds of thousands of requests per second, data is stored in a new bucket type: an Amazon S3 directory bucket. For more information, see What is S3 Express One Zone? and Directory buckets.
+
+You can store data with changing or unknown access patterns in S3 Intelligent-Tiering, which optimizes storage costs by automatically moving your data between four access tiers when your access patterns change. These four access tiers include two low-latency access tiers optimized for frequent and infrequent access, and two opt-in archive access tiers designed for asynchronous access for rarely accessed data.
+
+For more information, see Using Amazon S3 storage classes.
+
+Amazon VPC docs:
+What is Amazon VPC?
+With Amazon Virtual Private Cloud (Amazon VPC), you can launch AWS resources in a logically isolated virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, with the benefits of using the scalable infrastructure of AWS.
+
+The following diagram shows an example VPC. The VPC has one subnet in each of the Availability Zones in the Region, EC2 instances in each subnet, and an internet gateway to allow communication between the resources in your VPC and the internet.
+
+Features
+The following features help you configure a VPC to provide the connectivity that your applications need:
+
+Virtual private clouds (VPC)
+A VPC is a virtual network that closely resembles a traditional network that you'd operate in your own data center. After you create a VPC, you can add subnets.
+
+Subnets
+A subnet is a range of IP addresses in your VPC. A subnet must reside in a single Availability Zone. After you add subnets, you can deploy AWS resources in your VPC.
+
+IP addressing
+You can assign IP addresses, both IPv4 and IPv6, to your VPCs and subnets. You can also bring your public IPv4 addresses and IPv6 GUA addresses to AWS and allocate them to resources in your VPC, such as EC2 instances, NAT gateways, and Network Load Balancers.
+
+Routing
+Use route tables to determine where network traffic from your subnet or gateway is directed.
+
+Gateways and endpoints
+A gateway connects your VPC to another network. For example, use an internet gateway to connect your VPC to the internet. Use a VPC endpoint to connect to AWS services privately, without the use of an internet gateway or NAT device.
+
+Peering connections
+Use a VPC peering connection to route traffic between the resources in two VPCs.
+
+Traffic Mirroring
+Copy network traffic from network interfaces and send it to security and monitoring appliances for deep packet inspection.
+
+Transit gateways
+Use a transit gateway, which acts as a central hub, to route traffic between your VPCs, VPN connections, and AWS Direct Connect connections.
+
+VPC Flow Logs
+A flow log captures information about the IP traffic going to and from network interfaces in your VPC.
+
+VPN connections
+Connect your VPCs to your on-premises networks using AWS Virtual Private Network (AWS VPN).
+
+
+Amazon Textrac docs:
+What is Amazon Textract? Amazon Textract helps you add document text detection and analysis to your applications. Using Amazon Textract, you can do the following:
+
+Detect typed and handwritten text in a variety of documents, including financial reports, medical records, and tax forms.
+
+Extract text, forms, and tables from documents with structured data, using the Amazon Textract Document Analysis API.
+
+Specify and extract information from documents using the Queries feature within the Amazon Textract Analyze Document API.
+
+Process invoices and receipts with the AnalyzeExpense API.
+
+Process ID documents such as drivers licenses and passports issued by U.S. government, using the AnalyzeID API.
+
+Upload and process mortgage loan packages, through automatic routing of the the document pages to the appropriate Amazon Textract analysis operations using the Analyze Lending workflow. You can retrieve analysis results for each document page or you can retrieve summarized results for a set of document pages.
+
+Use Custom Queries to customize the pretrained Queries feature using your data to support your down stream processing needs.
+
+Amazon Textract is based on the same proven, highly scalable, deep-learning technology that was developed by Amazon's computer vision scientists to analyze billions of images and videos daily. You don't need any machine learning expertise to use it, as Amazon Textract includes simple, easy-to-use API operations that can analyze image files and PDF files. Amazon Textract is always learning from new data, and Amazon is continually adding new features to the service.
